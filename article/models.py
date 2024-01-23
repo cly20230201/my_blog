@@ -9,7 +9,7 @@ from PIL import Image
 class ArticleColumn(models.Model):
     objects = models.Manager()
     title = models.CharField(max_length=100, blank=True)
-    created = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         return self.title
@@ -40,8 +40,6 @@ class ArticlePost(models.Model):
             resized_image = image.resize((new_x, new_y), Image.LANCZOS)
             resized_image.save(self.avatar.path)
         return article
-
-
 
     class Meta:
         ordering = ('-created',)
